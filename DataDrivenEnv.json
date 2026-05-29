@@ -1,0 +1,16 @@
+{
+	"id": "6d5b3732-c6be-4a02-a6ab-e93ed7e387aa",
+	"name": "DataDrivenEnv",
+	"values": [
+		{
+			"key": "requestJSON",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-05-28T09:32:16.891Z",
+	"_postman_exported_using": "Postman/12.11.6"
+}

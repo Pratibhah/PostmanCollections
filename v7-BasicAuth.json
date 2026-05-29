@@ -1,0 +1,39 @@
+{
+  "info": {
+    "_postman_id": "a9d3f068-61a5-4aa0-abe0-3784b65af9fb",
+    "name": "v7-BasicAuth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19375140"
+  },
+  "item": [
+    {
+      "name": "AuthAPI",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic YWRtaW46YWRtaW4=",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://the-internet.herokuapp.com/basic_auth",
+          "protocol": "https",
+          "host": [
+            "the-internet",
+            "herokuapp",
+            "com"
+          ],
+          "path": [
+            "basic_auth"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

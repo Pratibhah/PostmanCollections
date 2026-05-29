@@ -1,0 +1,713 @@
+{
+  "info": {
+    "_postman_id": "be4f4a7e-7364-488b-99c0-1bb01334f2cf",
+    "name": "v7-GOREST",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19375140"
+  },
+  "item": [
+    {
+      "name": "POST APIs",
+      "item": [
+        {
+          "name": "Create A user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();",
+                  "",
+                  "const userID = response.id; //fetch the userId from response",
+                  "",
+                  "console.log(\"user Id is \" + userID);",
+                  "pm.variables.set(\"user_ID\", userID); ",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"gender\": \"male\",\n    \"status\": \"inactive\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/public/v2/users",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "GET APIs",
+      "item": [
+        {
+          "name": "Get A User",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 8417058,\n    \"name\": \"Lee COOPER\",\n    \"email\": \"banerjee_minakshi@anderson.test\",\n    \"gender\": \"male\",\n    \"status\": \"inactive\"\n}"
+            },
+            "url": {
+              "raw": "{{baseURL}}/public/v2/users/{{user_ID}}",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "{{user_ID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get  All Users",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}/public/v2/users",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/public/v2/users?page=1&per_page=200",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "public",
+                    "v2",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "200"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 13 Apr 2026 01:34:43 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "max-age=0, private, must-revalidate"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"70d43fc79af7b2775bde810f1eb3337c\""
+                },
+                {
+                  "key": "feature-policy",
+                  "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "strict-origin-when-cross-origin"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-links-current",
+                  "value": "https://gorest.co.in/public/v2/users?page=1"
+                },
+                {
+                  "key": "x-links-next",
+                  "value": "https://gorest.co.in/public/v2/users?page=2"
+                },
+                {
+                  "key": "x-links-previous",
+                  "value": ""
+                },
+                {
+                  "key": "x-pagination-limit",
+                  "value": "10"
+                },
+                {
+                  "key": "x-pagination-page",
+                  "value": "1"
+                },
+                {
+                  "key": "x-pagination-pages",
+                  "value": "291"
+                },
+                {
+                  "key": "x-pagination-total",
+                  "value": "2908"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "04a183ec-5448-4f2b-9019-13a5c71c923d"
+                },
+                {
+                  "key": "x-runtime",
+                  "value": "0.027577"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "nel",
+                  "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                },
+                {
+                  "key": "cf-cache-status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "report-to",
+                  "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Gb9qQh2aFbNoKjZzc1dlAINtjYwRJvIKEGq53gzLjNOAkaJr3mpTRQywngcEuWYUAzXK0MbRR8ySulbARKRw7vGTV5BBe7mSOe5VB%2Fmw6wqpqR9EOtIuo83mFR%2BAJMlUc9PMfGGz%2BLuo29g%3D\"}]}"
+                },
+                {
+                  "key": "content-encoding",
+                  "value": "br"
+                },
+                {
+                  "key": "server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "cf-ray",
+                  "value": "9eb6bae16ea7b416-MRS"
+                },
+                {
+                  "key": "alt-svc",
+                  "value": "h3=\":443\"; ma=86400"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 8422701,\n        \"name\": \"Puneet Gandhi DDS\",\n        \"email\": \"dds_gandhi_puneet@schinner.test\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422694,\n        \"name\": \"Aalok Dhawan\",\n        \"email\": \"dhawan_aalok@lubowitz.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422692,\n        \"name\": \"Yogendra Deshpande\",\n        \"email\": \"yogendra_deshpande@goldner.test\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422691,\n        \"name\": \"Ashok Patel II\",\n        \"email\": \"ii_ashok_patel@lesch-kulas.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422690,\n        \"name\": \"Shiv Bhattacharya CPA\",\n        \"email\": \"cpa_bhattacharya_shiv@runolfsdottir-klein.example\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422689,\n        \"name\": \"Pres. Anjushri Shah\",\n        \"email\": \"shah_pres_anjushri@hane.test\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422688,\n        \"name\": \"Sher Naik Esq.\",\n        \"email\": \"esq_naik_sher@mraz.example\",\n        \"gender\": \"female\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422687,\n        \"name\": \"Smriti Iyengar\",\n        \"email\": \"iyengar_smriti@dickens.example\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422686,\n        \"name\": \"Anal Talwar JD\",\n        \"email\": \"jd_anal_talwar@little-johnston.test\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422685,\n        \"name\": \"Chandraketu Naik\",\n        \"email\": \"chandraketu_naik@lakin.test\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    }\n]"
+            },
+            {
+              "name": "GET",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/public/v2/users?name=Aalok Dhawan&status=inactive",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "public",
+                    "v2",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "Aalok Dhawan"
+                    },
+                    {
+                      "key": "status",
+                      "value": "inactive"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 13 Apr 2026 01:48:08 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "max-age=0, private, must-revalidate"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"e2c76c0d6d7adcf83a943aaa17422d43\""
+                },
+                {
+                  "key": "feature-policy",
+                  "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "strict-origin-when-cross-origin"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-links-current",
+                  "value": "https://gorest.co.in/public/v2/users?page=1"
+                },
+                {
+                  "key": "x-links-next",
+                  "value": ""
+                },
+                {
+                  "key": "x-links-previous",
+                  "value": ""
+                },
+                {
+                  "key": "x-pagination-limit",
+                  "value": "10"
+                },
+                {
+                  "key": "x-pagination-page",
+                  "value": "1"
+                },
+                {
+                  "key": "x-pagination-pages",
+                  "value": "1"
+                },
+                {
+                  "key": "x-pagination-total",
+                  "value": "1"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "fa034e5d-853c-46ea-aba0-5b9548a94684"
+                },
+                {
+                  "key": "x-runtime",
+                  "value": "0.040833"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "nel",
+                  "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                },
+                {
+                  "key": "cf-cache-status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "report-to",
+                  "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=qgr2mGbDLo7iqEZT%2BiDMhJjeY3Vqc7ft%2BPoR3sD%2FRXdc8fqsYiIMXbZ1EklIXSdU63Kpde1tbeKMgCkM22OxAxzkB7MWZs96lQA2Fn96uWRETHDjdJL7Y4uVbQLX6xH5Or2flgsomFnFh08%3D\"}]}"
+                },
+                {
+                  "key": "content-encoding",
+                  "value": "br"
+                },
+                {
+                  "key": "server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "cf-ray",
+                  "value": "9eb6ce85ffbde1b2-MRS"
+                },
+                {
+                  "key": "alt-svc",
+                  "value": "h3=\":443\"; ma=86400"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 8422694,\n        \"name\": \"Aalok Dhawan\",\n        \"email\": \"dhawan_aalok@lubowitz.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    }\n]"
+            },
+            {
+              "name": "GET",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}/public/v2/users/:userId",
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "path": [
+                    "public",
+                    "v2",
+                    "users",
+                    ":userId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "userId",
+                      "value": "8422701"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 13 Apr 2026 02:00:50 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "max-age=0, private, must-revalidate"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"04c9cff1a973410cca72d444bee2ed65\""
+                },
+                {
+                  "key": "feature-policy",
+                  "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "strict-origin-when-cross-origin"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "c5fb46b7-676d-4bd4-a5b7-7d23eb929a4f"
+                },
+                {
+                  "key": "x-runtime",
+                  "value": "0.016593"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "nel",
+                  "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                },
+                {
+                  "key": "cf-cache-status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "report-to",
+                  "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=nM2q5AlTjoHdCFQT%2FLb2mreqAAYP2NaROQgeGOkID1X551k8ofrqXAiROBlsrv4I4WgGn0GkBL2lFj4qnaupNVxF87iksRSLktfFPop4OxTpNsdfTHiIHEfCavQfqQThasCYbP2v%2BYgpN8Y%3D\"}]}"
+                },
+                {
+                  "key": "content-encoding",
+                  "value": "br"
+                },
+                {
+                  "key": "server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "cf-ray",
+                  "value": "9eb6e121ca865fd0-MRS"
+                },
+                {
+                  "key": "alt-svc",
+                  "value": "h3=\":443\"; ma=86400"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 8422701,\n    \"name\": \"Puneet Gandhi DDS\",\n    \"email\": \"dds_gandhi_puneet@schinner.test\",\n    \"gender\": \"male\",\n    \"status\": \"active\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PUT APIs",
+      "item": [
+        {
+          "name": "Update A User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"gender\": \"female\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/public/v2/users/{{user_ID}}",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "{{user_ID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Patch  A User",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}/public/v2/users/{{user_ID}}",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "{{user_ID}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "DELETE APIs",
+      "item": [
+        {
+          "name": "Delete A User",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/public/v2/users/{{user_ID}}",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "{{user_ID}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "if(pm.request.method == \"GET\"){",
+          "",
+          "    pm.test(\"Status code is 200\", function () {",
+          "        pm.response.to.have.status(200);",
+          "    });",
+          "}",
+          "",
+          "if(pm.request.method == \"POST\"){",
+          "",
+          "    pm.test(\"Status code is 201\", function () {",
+          "        pm.response.to.have.status(201);",
+          "    });",
+          "}",
+          "",
+          "if(pm.request.method == \"PUT\" || pm.request.method == \"PATCH\"){",
+          "",
+          "    pm.test(\"Status code is 200\", function () {",
+          "        pm.response.to.have.status(200);",
+          "    });",
+          "}",
+          "",
+          "if(pm.request.method == \"DELETE\"){",
+          "",
+          "    pm.test(\"Status code is 204\", function () {",
+          "        pm.response.to.have.status(204);",
+          "    });",
+          "}"
+        ]
+      }
+    }
+  ]
+}

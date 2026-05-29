@@ -1,0 +1,22 @@
+{
+	"id": "7d7feed1-060d-44c7-8abb-9990e05f1f06",
+	"name": "GOREST_DEV_ENV",
+	"values": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "userID",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-05-28T09:33:10.346Z",
+	"_postman_exported_using": "Postman/12.11.6"
+}

@@ -1,0 +1,4480 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "be4f4a7e-7364-488b-99c0-1bb01334f2cf",
+      "exporter_id": "19375140"
+    },
+    "item": [
+      {
+        "id": "b1a66705-3b94-4a56-9447-37dcdc96cf4c",
+        "name": "POST APIs",
+        "item": [
+          {
+            "id": "e2416c2b-5bbe-4760-88ac-2e350752f4b9",
+            "name": "Create A user",
+            "request": {
+              "url": {
+                "path": [
+                  "public",
+                  "v2",
+                  "users"
+                ],
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "{{tokenID}}"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"name\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"gender\": \"male\",\n    \"status\": \"inactive\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "response": [],
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "id": "aef5f96b-7d4c-4829-99e3-c5bca5ca895a",
+                  "type": "text/javascript",
+                  "packages": {},
+                  "exec": [
+                    "const response = pm.response.json();",
+                    "",
+                    "const userID = response.id; //fetch the userId from response",
+                    "",
+                    "console.log(\"user Id is \" + userID);",
+                    "pm.variables.set(\"user_ID\", userID); ",
+                    ""
+                  ],
+                  "_lastExecutionId": "1efa2522-1c86-48ef-b49e-ed0980cb1f50"
+                }
+              }
+            ]
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "b6ab7f98-db65-447a-853d-73eb5750b4f6",
+        "name": "GET APIs",
+        "item": [
+          {
+            "id": "d0051d6d-7826-41de-9761-8e1f50810b89",
+            "name": "Get A User",
+            "request": {
+              "url": {
+                "path": [
+                  "public",
+                  "v2",
+                  "users",
+                  "{{user_ID}}"
+                ],
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "{{tokenID}}"
+                }
+              ],
+              "method": "GET",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"id\": 8417058,\n    \"name\": \"Lee COOPER\",\n    \"email\": \"banerjee_minakshi@anderson.test\",\n    \"gender\": \"male\",\n    \"status\": \"inactive\"\n}"
+              }
+            },
+            "response": [],
+            "event": [],
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            }
+          },
+          {
+            "id": "c5657ef6-2bb1-4a89-9217-600f2fba2279",
+            "name": "Get  All Users",
+            "request": {
+              "url": {
+                "path": [
+                  "public",
+                  "v2",
+                  "users"
+                ],
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "{{tokenID}}"
+                }
+              ],
+              "method": "GET",
+              "auth": {
+                "type": "noauth",
+                "noauth": []
+              }
+            },
+            "response": [
+              {
+                "_": {
+                  "postman_previewlanguage": null
+                },
+                "id": "34d5f5e6-7604-4bdf-b5e5-07cb2f408b03",
+                "name": "GET",
+                "originalRequest": {
+                  "url": {
+                    "path": [
+                      "public",
+                      "v2",
+                      "users"
+                    ],
+                    "host": [
+                      "{{baseURL}}"
+                    ],
+                    "query": [
+                      {
+                        "key": "page",
+                        "value": "1"
+                      },
+                      {
+                        "key": "per_page",
+                        "value": "200"
+                      }
+                    ],
+                    "variable": []
+                  },
+                  "method": "GET"
+                },
+                "status": "OK",
+                "code": 200,
+                "header": [
+                  {
+                    "key": ":status",
+                    "value": 200
+                  },
+                  {
+                    "key": "date",
+                    "value": "Mon, 13 Apr 2026 01:34:43 GMT"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json; charset=utf-8"
+                  },
+                  {
+                    "key": "cache-control",
+                    "value": "max-age=0, private, must-revalidate"
+                  },
+                  {
+                    "key": "etag",
+                    "value": "W/\"70d43fc79af7b2775bde810f1eb3337c\""
+                  },
+                  {
+                    "key": "feature-policy",
+                    "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                  },
+                  {
+                    "key": "referrer-policy",
+                    "value": "strict-origin-when-cross-origin"
+                  },
+                  {
+                    "key": "vary",
+                    "value": "Origin"
+                  },
+                  {
+                    "key": "x-content-type-options",
+                    "value": "nosniff"
+                  },
+                  {
+                    "key": "x-download-options",
+                    "value": "noopen"
+                  },
+                  {
+                    "key": "x-frame-options",
+                    "value": "SAMEORIGIN"
+                  },
+                  {
+                    "key": "x-links-current",
+                    "value": "https://gorest.co.in/public/v2/users?page=1"
+                  },
+                  {
+                    "key": "x-links-next",
+                    "value": "https://gorest.co.in/public/v2/users?page=2"
+                  },
+                  {
+                    "key": "x-links-previous",
+                    "value": ""
+                  },
+                  {
+                    "key": "x-pagination-limit",
+                    "value": "10"
+                  },
+                  {
+                    "key": "x-pagination-page",
+                    "value": "1"
+                  },
+                  {
+                    "key": "x-pagination-pages",
+                    "value": "291"
+                  },
+                  {
+                    "key": "x-pagination-total",
+                    "value": "2908"
+                  },
+                  {
+                    "key": "x-permitted-cross-domain-policies",
+                    "value": "none"
+                  },
+                  {
+                    "key": "x-request-id",
+                    "value": "04a183ec-5448-4f2b-9019-13a5c71c923d"
+                  },
+                  {
+                    "key": "x-runtime",
+                    "value": "0.027577"
+                  },
+                  {
+                    "key": "x-xss-protection",
+                    "value": "0"
+                  },
+                  {
+                    "key": "nel",
+                    "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                  },
+                  {
+                    "key": "cf-cache-status",
+                    "value": "DYNAMIC"
+                  },
+                  {
+                    "key": "report-to",
+                    "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Gb9qQh2aFbNoKjZzc1dlAINtjYwRJvIKEGq53gzLjNOAkaJr3mpTRQywngcEuWYUAzXK0MbRR8ySulbARKRw7vGTV5BBe7mSOe5VB%2Fmw6wqpqR9EOtIuo83mFR%2BAJMlUc9PMfGGz%2BLuo29g%3D\"}]}"
+                  },
+                  {
+                    "key": "content-encoding",
+                    "value": "br"
+                  },
+                  {
+                    "key": "server",
+                    "value": "cloudflare"
+                  },
+                  {
+                    "key": "cf-ray",
+                    "value": "9eb6bae16ea7b416-MRS"
+                  },
+                  {
+                    "key": "alt-svc",
+                    "value": "h3=\":443\"; ma=86400"
+                  }
+                ],
+                "body": "[\n    {\n        \"id\": 8422701,\n        \"name\": \"Puneet Gandhi DDS\",\n        \"email\": \"dds_gandhi_puneet@schinner.test\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422694,\n        \"name\": \"Aalok Dhawan\",\n        \"email\": \"dhawan_aalok@lubowitz.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422692,\n        \"name\": \"Yogendra Deshpande\",\n        \"email\": \"yogendra_deshpande@goldner.test\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422691,\n        \"name\": \"Ashok Patel II\",\n        \"email\": \"ii_ashok_patel@lesch-kulas.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422690,\n        \"name\": \"Shiv Bhattacharya CPA\",\n        \"email\": \"cpa_bhattacharya_shiv@runolfsdottir-klein.example\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422689,\n        \"name\": \"Pres. Anjushri Shah\",\n        \"email\": \"shah_pres_anjushri@hane.test\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422688,\n        \"name\": \"Sher Naik Esq.\",\n        \"email\": \"esq_naik_sher@mraz.example\",\n        \"gender\": \"female\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422687,\n        \"name\": \"Smriti Iyengar\",\n        \"email\": \"iyengar_smriti@dickens.example\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422686,\n        \"name\": \"Anal Talwar JD\",\n        \"email\": \"jd_anal_talwar@little-johnston.test\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422685,\n        \"name\": \"Chandraketu Naik\",\n        \"email\": \"chandraketu_naik@lakin.test\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    }\n]",
+                "cookie": []
+              },
+              {
+                "_": {
+                  "postman_previewlanguage": null
+                },
+                "id": "8834167d-c774-4ba7-8050-1804d69ac672",
+                "name": "GET",
+                "originalRequest": {
+                  "url": {
+                    "path": [
+                      "public",
+                      "v2",
+                      "users"
+                    ],
+                    "host": [
+                      "{{baseURL}}"
+                    ],
+                    "query": [
+                      {
+                        "key": "name",
+                        "value": "Aalok Dhawan"
+                      },
+                      {
+                        "key": "status",
+                        "value": "inactive"
+                      }
+                    ],
+                    "variable": []
+                  },
+                  "method": "GET"
+                },
+                "status": "OK",
+                "code": 200,
+                "header": [
+                  {
+                    "key": ":status",
+                    "value": 200
+                  },
+                  {
+                    "key": "date",
+                    "value": "Mon, 13 Apr 2026 01:48:08 GMT"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json; charset=utf-8"
+                  },
+                  {
+                    "key": "cache-control",
+                    "value": "max-age=0, private, must-revalidate"
+                  },
+                  {
+                    "key": "etag",
+                    "value": "W/\"e2c76c0d6d7adcf83a943aaa17422d43\""
+                  },
+                  {
+                    "key": "feature-policy",
+                    "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                  },
+                  {
+                    "key": "referrer-policy",
+                    "value": "strict-origin-when-cross-origin"
+                  },
+                  {
+                    "key": "vary",
+                    "value": "Origin"
+                  },
+                  {
+                    "key": "x-content-type-options",
+                    "value": "nosniff"
+                  },
+                  {
+                    "key": "x-download-options",
+                    "value": "noopen"
+                  },
+                  {
+                    "key": "x-frame-options",
+                    "value": "SAMEORIGIN"
+                  },
+                  {
+                    "key": "x-links-current",
+                    "value": "https://gorest.co.in/public/v2/users?page=1"
+                  },
+                  {
+                    "key": "x-links-next",
+                    "value": ""
+                  },
+                  {
+                    "key": "x-links-previous",
+                    "value": ""
+                  },
+                  {
+                    "key": "x-pagination-limit",
+                    "value": "10"
+                  },
+                  {
+                    "key": "x-pagination-page",
+                    "value": "1"
+                  },
+                  {
+                    "key": "x-pagination-pages",
+                    "value": "1"
+                  },
+                  {
+                    "key": "x-pagination-total",
+                    "value": "1"
+                  },
+                  {
+                    "key": "x-permitted-cross-domain-policies",
+                    "value": "none"
+                  },
+                  {
+                    "key": "x-request-id",
+                    "value": "fa034e5d-853c-46ea-aba0-5b9548a94684"
+                  },
+                  {
+                    "key": "x-runtime",
+                    "value": "0.040833"
+                  },
+                  {
+                    "key": "x-xss-protection",
+                    "value": "0"
+                  },
+                  {
+                    "key": "nel",
+                    "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                  },
+                  {
+                    "key": "cf-cache-status",
+                    "value": "DYNAMIC"
+                  },
+                  {
+                    "key": "report-to",
+                    "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=qgr2mGbDLo7iqEZT%2BiDMhJjeY3Vqc7ft%2BPoR3sD%2FRXdc8fqsYiIMXbZ1EklIXSdU63Kpde1tbeKMgCkM22OxAxzkB7MWZs96lQA2Fn96uWRETHDjdJL7Y4uVbQLX6xH5Or2flgsomFnFh08%3D\"}]}"
+                  },
+                  {
+                    "key": "content-encoding",
+                    "value": "br"
+                  },
+                  {
+                    "key": "server",
+                    "value": "cloudflare"
+                  },
+                  {
+                    "key": "cf-ray",
+                    "value": "9eb6ce85ffbde1b2-MRS"
+                  },
+                  {
+                    "key": "alt-svc",
+                    "value": "h3=\":443\"; ma=86400"
+                  }
+                ],
+                "body": "[\n    {\n        \"id\": 8422694,\n        \"name\": \"Aalok Dhawan\",\n        \"email\": \"dhawan_aalok@lubowitz.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    }\n]",
+                "cookie": []
+              },
+              {
+                "_": {
+                  "postman_previewlanguage": null
+                },
+                "id": "0fdcebe9-075c-448c-ac77-ed5892873cbb",
+                "name": "GET",
+                "originalRequest": {
+                  "url": {
+                    "path": [
+                      "public",
+                      "v2",
+                      "users",
+                      ":userId"
+                    ],
+                    "host": [
+                      "{{baseURL}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                      {
+                        "type": "any",
+                        "value": "8422701",
+                        "key": "userId"
+                      }
+                    ]
+                  },
+                  "method": "GET"
+                },
+                "status": "OK",
+                "code": 200,
+                "header": [
+                  {
+                    "key": ":status",
+                    "value": 200
+                  },
+                  {
+                    "key": "date",
+                    "value": "Mon, 13 Apr 2026 02:00:50 GMT"
+                  },
+                  {
+                    "key": "content-type",
+                    "value": "application/json; charset=utf-8"
+                  },
+                  {
+                    "key": "cache-control",
+                    "value": "max-age=0, private, must-revalidate"
+                  },
+                  {
+                    "key": "etag",
+                    "value": "W/\"04c9cff1a973410cca72d444bee2ed65\""
+                  },
+                  {
+                    "key": "feature-policy",
+                    "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                  },
+                  {
+                    "key": "referrer-policy",
+                    "value": "strict-origin-when-cross-origin"
+                  },
+                  {
+                    "key": "vary",
+                    "value": "Origin"
+                  },
+                  {
+                    "key": "x-content-type-options",
+                    "value": "nosniff"
+                  },
+                  {
+                    "key": "x-download-options",
+                    "value": "noopen"
+                  },
+                  {
+                    "key": "x-frame-options",
+                    "value": "SAMEORIGIN"
+                  },
+                  {
+                    "key": "x-permitted-cross-domain-policies",
+                    "value": "none"
+                  },
+                  {
+                    "key": "x-request-id",
+                    "value": "c5fb46b7-676d-4bd4-a5b7-7d23eb929a4f"
+                  },
+                  {
+                    "key": "x-runtime",
+                    "value": "0.016593"
+                  },
+                  {
+                    "key": "x-xss-protection",
+                    "value": "0"
+                  },
+                  {
+                    "key": "nel",
+                    "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                  },
+                  {
+                    "key": "cf-cache-status",
+                    "value": "DYNAMIC"
+                  },
+                  {
+                    "key": "report-to",
+                    "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=nM2q5AlTjoHdCFQT%2FLb2mreqAAYP2NaROQgeGOkID1X551k8ofrqXAiROBlsrv4I4WgGn0GkBL2lFj4qnaupNVxF87iksRSLktfFPop4OxTpNsdfTHiIHEfCavQfqQThasCYbP2v%2BYgpN8Y%3D\"}]}"
+                  },
+                  {
+                    "key": "content-encoding",
+                    "value": "br"
+                  },
+                  {
+                    "key": "server",
+                    "value": "cloudflare"
+                  },
+                  {
+                    "key": "cf-ray",
+                    "value": "9eb6e121ca865fd0-MRS"
+                  },
+                  {
+                    "key": "alt-svc",
+                    "value": "h3=\":443\"; ma=86400"
+                  }
+                ],
+                "body": "{\n    \"id\": 8422701,\n    \"name\": \"Puneet Gandhi DDS\",\n    \"email\": \"dds_gandhi_puneet@schinner.test\",\n    \"gender\": \"male\",\n    \"status\": \"active\"\n}",
+                "cookie": []
+              }
+            ],
+            "event": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "33ba7594-28ef-4029-953b-3f5f45d829a6",
+        "name": "PUT APIs",
+        "item": [
+          {
+            "id": "6625daeb-7e08-443b-9d3e-da55cf9bc484",
+            "name": "Update A User",
+            "request": {
+              "url": {
+                "path": [
+                  "public",
+                  "v2",
+                  "users",
+                  "{{user_ID}}"
+                ],
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "{{tokenID}}"
+                }
+              ],
+              "method": "PUT",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"gender\": \"female\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "response": [],
+            "event": []
+          },
+          {
+            "id": "62e49668-436c-4c37-be12-fc02e71cceb7",
+            "name": "Patch  A User",
+            "request": {
+              "url": {
+                "path": [
+                  "public",
+                  "v2",
+                  "users",
+                  "{{user_ID}}"
+                ],
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "{{tokenID}}"
+                }
+              ],
+              "method": "PATCH"
+            },
+            "response": [],
+            "event": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "37bb7e70-356c-4a83-ad3d-0c9591bb5159",
+        "name": "DELETE APIs",
+        "item": [
+          {
+            "id": "c85c8243-f88b-4198-821b-e60073332453",
+            "name": "Delete A User",
+            "request": {
+              "url": {
+                "path": [
+                  "public",
+                  "v2",
+                  "users",
+                  "{{user_ID}}"
+                ],
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "{{tokenID}}"
+                }
+              ],
+              "method": "DELETE",
+              "body": {
+                "mode": "raw",
+                "raw": "",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "response": [],
+            "event": []
+          }
+        ],
+        "event": []
+      }
+    ],
+    "event": [
+      {
+        "listen": "prerequest",
+        "script": {
+          "id": "ba62b093-5493-44d6-8c6f-a80bc4e65194",
+          "type": "text/javascript",
+          "packages": {},
+          "exec": [
+            ""
+          ],
+          "_lastExecutionId": "f2a51633-2cc3-4f1c-bf22-bfb2637f7828"
+        }
+      },
+      {
+        "listen": "test",
+        "script": {
+          "id": "e4d2e597-cc9c-4e57-9cdf-7d27470abf13",
+          "type": "text/javascript",
+          "packages": {},
+          "exec": [
+            "if(pm.request.method == \"GET\"){",
+            "",
+            "    pm.test(\"Status code is 200\", function () {",
+            "        pm.response.to.have.status(200);",
+            "    });",
+            "}",
+            "",
+            "if(pm.request.method == \"POST\"){",
+            "",
+            "    pm.test(\"Status code is 201\", function () {",
+            "        pm.response.to.have.status(201);",
+            "    });",
+            "}",
+            "",
+            "if(pm.request.method == \"PUT\" || pm.request.method == \"PATCH\"){",
+            "",
+            "    pm.test(\"Status code is 200\", function () {",
+            "        pm.response.to.have.status(200);",
+            "    });",
+            "}",
+            "",
+            "if(pm.request.method == \"DELETE\"){",
+            "",
+            "    pm.test(\"Status code is 204\", function () {",
+            "        pm.response.to.have.status(204);",
+            "    });",
+            "}"
+          ],
+          "_lastExecutionId": "cc79dc1e-b87c-48c6-9aa7-787f0ed1b746"
+        }
+      }
+    ],
+    "variable": [],
+    "info": {
+      "_postman_id": "be4f4a7e-7364-488b-99c0-1bb01334f2cf",
+      "name": "v7-GOREST",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "_": {
+      "postman_variable_scope": "environment",
+      "postman_exported_at": "2026-05-20T12:33:07.960Z",
+      "postman_exported_using": "Postman/12.10.4"
+    },
+    "id": "3bd7f7b3-3fe3-41d0-a5d2-f21d04f0c4c5",
+    "name": "GOREST_QA_ENV",
+    "values": [
+      {
+        "type": "any",
+        "value": "https://gorest.co.in",
+        "key": "baseURL"
+      },
+      {
+        "type": "any",
+        "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9",
+        "key": "tokenID"
+      }
+    ]
+  },
+  "globals": {
+    "id": "7fe2b86d-800b-4e3b-a3cd-afaa431121e1",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 13,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 7,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 534.5,
+      "responseMin": 355,
+      "responseMax": 1237,
+      "responseSd": 316.10480856829747,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1779334219767,
+      "completed": 1779334223127
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 6,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "db1ba226-2b8d-4573-9c95-04612eebea6c",
+          "httpRequestId": "0799cc8b-6342-4786-9f43-6643fc4538da"
+        },
+        "item": {
+          "id": "e2416c2b-5bbe-4760-88ac-2e350752f4b9",
+          "name": "Create A user",
+          "request": {
+            "url": {
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ],
+              "host": [
+                "{{baseURL}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"gender\": \"male\",\n    \"status\": \"inactive\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "aef5f96b-7d4c-4829-99e3-c5bca5ca895a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const response = pm.response.json();",
+                  "",
+                  "const userID = response.id; //fetch the userId from response",
+                  "",
+                  "console.log(\"user Id is \" + userID);",
+                  "pm.variables.set(\"user_ID\", userID); ",
+                  ""
+                ],
+                "_lastExecutionId": "1efa2522-1c86-48ef-b49e-ed0980cb1f50"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "public",
+              "v2",
+              "users"
+            ],
+            "host": [
+              "gorest",
+              "co",
+              "in"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "6f339520-2c6e-4da3-ac08-84bf08ab572a",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "gorest.co.in",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "124",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": \"Rachel_McGlynn\",\n    \"email\": \"Arden.Denesik97@hotmail.com\",\n    \"gender\": \"male\",\n    \"status\": \"inactive\"\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "467308fa-106f-4ae8-a7ac-24c468d64bfd",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 21 May 2026 03:30:20 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "112"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "max-age=0, private, must-revalidate"
+            },
+            {
+              "key": "content-security-policy-report-only",
+              "value": "default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com 'nonce-X5j6JM+M06zfIVF45ukLRw=='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google; frame-src https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"dd72f9e46712563be6aaf59997a4ab2f\""
+            },
+            {
+              "key": "feature-policy",
+              "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+            },
+            {
+              "key": "location",
+              "value": "https://gorest.co.in/public/v2/users/8472207"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=63072000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Origin"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "90"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "84"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1"
+            },
+            {
+              "key": "x-request-id",
+              "value": "8a8bdb45-9eb7-4fd5-b24b-10614d824462"
+            },
+            {
+              "key": "x-runtime",
+              "value": "0.105382"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=naXbKoyG8BqaF0qaUNqYCWwblQMAdz9%2Bexv6%2FzDbJdd3IzdlQg3FuSSl8AErzLbsIJQhgaOuiVPX8goKxLTGnND4IeKpfINVdtb%2FpVYN8FfkeZp9Jnd5GC77wtAz7ibpvYXZfon8%2Bc9SwPc%3D\"}]}"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9ff0807c3a1ecac8-MRS"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              55,
+              50,
+              50,
+              48,
+              55,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              82,
+              97,
+              99,
+              104,
+              101,
+              108,
+              95,
+              77,
+              99,
+              71,
+              108,
+              121,
+              110,
+              110,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              65,
+              114,
+              100,
+              101,
+              110,
+              46,
+              68,
+              101,
+              110,
+              101,
+              115,
+              105,
+              107,
+              57,
+              55,
+              64,
+              104,
+              111,
+              116,
+              109,
+              97,
+              105,
+              108,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 1237,
+          "responseSize": 112
+        },
+        "id": "e2416c2b-5bbe-4760-88ac-2e350752f4b9",
+        "assertions": [
+          {
+            "assertion": "Status code is 201",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "bf072c87-c2d3-45d7-aabf-a59902c9ff97",
+          "length": 6,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "e31f5a69-0272-418e-ab13-3cd4ca091f7c"
+        },
+        "item": {
+          "id": "d0051d6d-7826-41de-9761-8e1f50810b89",
+          "name": "Get A User",
+          "request": {
+            "url": {
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "{{user_ID}}"
+              ],
+              "host": [
+                "{{baseURL}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 8417058,\n    \"name\": \"Lee COOPER\",\n    \"email\": \"banerjee_minakshi@anderson.test\",\n    \"gender\": \"male\",\n    \"status\": \"inactive\"\n}"
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "public",
+              "v2",
+              "users",
+              "8472207"
+            ],
+            "host": [
+              "gorest",
+              "co",
+              "in"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "a633d5b3-5ced-4b5b-8f9a-128fcff612bc",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "gorest.co.in",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "143",
+              "system": true
+            }
+          ],
+          "method": "GET",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"id\": 8417058,\n    \"name\": \"Lee COOPER\",\n    \"email\": \"banerjee_minakshi@anderson.test\",\n    \"gender\": \"male\",\n    \"status\": \"inactive\"\n}"
+          }
+        },
+        "response": {
+          "id": "6c2065c3-0abf-4fdb-878a-89bd4652901f",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 21 May 2026 03:30:21 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "max-age=0, private, must-revalidate"
+            },
+            {
+              "key": "content-security-policy-report-only",
+              "value": "default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com 'nonce-JSoVjjSb7WHKQXD94wvDKg=='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google; frame-src https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"dd72f9e46712563be6aaf59997a4ab2f\""
+            },
+            {
+              "key": "feature-policy",
+              "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=63072000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Origin"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "90"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "89"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "2"
+            },
+            {
+              "key": "x-request-id",
+              "value": "53c8859f-20b4-4e04-884f-8a38818b00a8"
+            },
+            {
+              "key": "x-runtime",
+              "value": "0.025655"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=erBxKxhvvgMBPg7QVdx8KGoC77iMpdBLovRGHKKpqNoslj08uiC4N0PmeWNatPzEua4jDMntGWuidT%2Fli%2FdwpJg51RxRp5BciKGvsZYw6ouBqaUianhMIBOrJ1FxZsc74%2BBFBQv%2B3OVgG7k%3D\"}]}"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9ff080826fadcac8-MRS"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              55,
+              50,
+              50,
+              48,
+              55,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              82,
+              97,
+              99,
+              104,
+              101,
+              108,
+              95,
+              77,
+              99,
+              71,
+              108,
+              121,
+              110,
+              110,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              65,
+              114,
+              100,
+              101,
+              110,
+              46,
+              68,
+              101,
+              110,
+              101,
+              115,
+              105,
+              107,
+              57,
+              55,
+              64,
+              104,
+              111,
+              116,
+              109,
+              97,
+              105,
+              108,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 364,
+          "responseSize": 112
+        },
+        "id": "d0051d6d-7826-41de-9761-8e1f50810b89",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "de457ed1-9635-416e-889f-f5a7167be8f3",
+          "length": 6,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "764b8b2d-7032-4ebc-95f2-3429b312500c"
+        },
+        "item": {
+          "id": "c5657ef6-2bb1-4a89-9217-600f2fba2279",
+          "name": "Get  All Users",
+          "request": {
+            "url": {
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ],
+              "host": [
+                "{{baseURL}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth",
+              "noauth": []
+            }
+          },
+          "response": [
+            {
+              "_": {
+                "postman_previewlanguage": null
+              },
+              "id": "34d5f5e6-7604-4bdf-b5e5-07cb2f408b03",
+              "name": "GET",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 13 Apr 2026 01:34:43 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "max-age=0, private, must-revalidate"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"70d43fc79af7b2775bde810f1eb3337c\""
+                },
+                {
+                  "key": "feature-policy",
+                  "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "strict-origin-when-cross-origin"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-links-current",
+                  "value": "https://gorest.co.in/public/v2/users?page=1"
+                },
+                {
+                  "key": "x-links-next",
+                  "value": "https://gorest.co.in/public/v2/users?page=2"
+                },
+                {
+                  "key": "x-links-previous",
+                  "value": ""
+                },
+                {
+                  "key": "x-pagination-limit",
+                  "value": "10"
+                },
+                {
+                  "key": "x-pagination-page",
+                  "value": "1"
+                },
+                {
+                  "key": "x-pagination-pages",
+                  "value": "291"
+                },
+                {
+                  "key": "x-pagination-total",
+                  "value": "2908"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "04a183ec-5448-4f2b-9019-13a5c71c923d"
+                },
+                {
+                  "key": "x-runtime",
+                  "value": "0.027577"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "nel",
+                  "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                },
+                {
+                  "key": "cf-cache-status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "report-to",
+                  "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Gb9qQh2aFbNoKjZzc1dlAINtjYwRJvIKEGq53gzLjNOAkaJr3mpTRQywngcEuWYUAzXK0MbRR8ySulbARKRw7vGTV5BBe7mSOe5VB%2Fmw6wqpqR9EOtIuo83mFR%2BAJMlUc9PMfGGz%2BLuo29g%3D\"}]}"
+                },
+                {
+                  "key": "content-encoding",
+                  "value": "br"
+                },
+                {
+                  "key": "server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "cf-ray",
+                  "value": "9eb6bae16ea7b416-MRS"
+                },
+                {
+                  "key": "alt-svc",
+                  "value": "h3=\":443\"; ma=86400"
+                }
+              ],
+              "body": "[\n    {\n        \"id\": 8422701,\n        \"name\": \"Puneet Gandhi DDS\",\n        \"email\": \"dds_gandhi_puneet@schinner.test\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422694,\n        \"name\": \"Aalok Dhawan\",\n        \"email\": \"dhawan_aalok@lubowitz.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422692,\n        \"name\": \"Yogendra Deshpande\",\n        \"email\": \"yogendra_deshpande@goldner.test\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422691,\n        \"name\": \"Ashok Patel II\",\n        \"email\": \"ii_ashok_patel@lesch-kulas.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422690,\n        \"name\": \"Shiv Bhattacharya CPA\",\n        \"email\": \"cpa_bhattacharya_shiv@runolfsdottir-klein.example\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422689,\n        \"name\": \"Pres. Anjushri Shah\",\n        \"email\": \"shah_pres_anjushri@hane.test\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422688,\n        \"name\": \"Sher Naik Esq.\",\n        \"email\": \"esq_naik_sher@mraz.example\",\n        \"gender\": \"female\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8422687,\n        \"name\": \"Smriti Iyengar\",\n        \"email\": \"iyengar_smriti@dickens.example\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422686,\n        \"name\": \"Anal Talwar JD\",\n        \"email\": \"jd_anal_talwar@little-johnston.test\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8422685,\n        \"name\": \"Chandraketu Naik\",\n        \"email\": \"chandraketu_naik@lakin.test\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    }\n]",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": null
+              },
+              "id": "8834167d-c774-4ba7-8050-1804d69ac672",
+              "name": "GET",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "Aalok Dhawan"
+                    },
+                    {
+                      "key": "status",
+                      "value": "inactive"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 13 Apr 2026 01:48:08 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "max-age=0, private, must-revalidate"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"e2c76c0d6d7adcf83a943aaa17422d43\""
+                },
+                {
+                  "key": "feature-policy",
+                  "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "strict-origin-when-cross-origin"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-links-current",
+                  "value": "https://gorest.co.in/public/v2/users?page=1"
+                },
+                {
+                  "key": "x-links-next",
+                  "value": ""
+                },
+                {
+                  "key": "x-links-previous",
+                  "value": ""
+                },
+                {
+                  "key": "x-pagination-limit",
+                  "value": "10"
+                },
+                {
+                  "key": "x-pagination-page",
+                  "value": "1"
+                },
+                {
+                  "key": "x-pagination-pages",
+                  "value": "1"
+                },
+                {
+                  "key": "x-pagination-total",
+                  "value": "1"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "fa034e5d-853c-46ea-aba0-5b9548a94684"
+                },
+                {
+                  "key": "x-runtime",
+                  "value": "0.040833"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "nel",
+                  "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                },
+                {
+                  "key": "cf-cache-status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "report-to",
+                  "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=qgr2mGbDLo7iqEZT%2BiDMhJjeY3Vqc7ft%2BPoR3sD%2FRXdc8fqsYiIMXbZ1EklIXSdU63Kpde1tbeKMgCkM22OxAxzkB7MWZs96lQA2Fn96uWRETHDjdJL7Y4uVbQLX6xH5Or2flgsomFnFh08%3D\"}]}"
+                },
+                {
+                  "key": "content-encoding",
+                  "value": "br"
+                },
+                {
+                  "key": "server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "cf-ray",
+                  "value": "9eb6ce85ffbde1b2-MRS"
+                },
+                {
+                  "key": "alt-svc",
+                  "value": "h3=\":443\"; ma=86400"
+                }
+              ],
+              "body": "[\n    {\n        \"id\": 8422694,\n        \"name\": \"Aalok Dhawan\",\n        \"email\": \"dhawan_aalok@lubowitz.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    }\n]",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": null
+              },
+              "id": "0fdcebe9-075c-448c-ac77-ed5892873cbb",
+              "name": "GET",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v2",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseURL}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "value": "8422701",
+                      "key": "userId"
+                    }
+                  ]
+                },
+                "method": "GET"
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 13 Apr 2026 02:00:50 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "max-age=0, private, must-revalidate"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"04c9cff1a973410cca72d444bee2ed65\""
+                },
+                {
+                  "key": "feature-policy",
+                  "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+                },
+                {
+                  "key": "referrer-policy",
+                  "value": "strict-origin-when-cross-origin"
+                },
+                {
+                  "key": "vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "x-content-type-options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "x-download-options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "x-frame-options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "x-permitted-cross-domain-policies",
+                  "value": "none"
+                },
+                {
+                  "key": "x-request-id",
+                  "value": "c5fb46b7-676d-4bd4-a5b7-7d23eb929a4f"
+                },
+                {
+                  "key": "x-runtime",
+                  "value": "0.016593"
+                },
+                {
+                  "key": "x-xss-protection",
+                  "value": "0"
+                },
+                {
+                  "key": "nel",
+                  "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                },
+                {
+                  "key": "cf-cache-status",
+                  "value": "DYNAMIC"
+                },
+                {
+                  "key": "report-to",
+                  "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=nM2q5AlTjoHdCFQT%2FLb2mreqAAYP2NaROQgeGOkID1X551k8ofrqXAiROBlsrv4I4WgGn0GkBL2lFj4qnaupNVxF87iksRSLktfFPop4OxTpNsdfTHiIHEfCavQfqQThasCYbP2v%2BYgpN8Y%3D\"}]}"
+                },
+                {
+                  "key": "content-encoding",
+                  "value": "br"
+                },
+                {
+                  "key": "server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "cf-ray",
+                  "value": "9eb6e121ca865fd0-MRS"
+                },
+                {
+                  "key": "alt-svc",
+                  "value": "h3=\":443\"; ma=86400"
+                }
+              ],
+              "body": "{\n    \"id\": 8422701,\n    \"name\": \"Puneet Gandhi DDS\",\n    \"email\": \"dds_gandhi_puneet@schinner.test\",\n    \"gender\": \"male\",\n    \"status\": \"active\"\n}",
+              "cookie": []
+            }
+          ],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "public",
+              "v2",
+              "users"
+            ],
+            "host": [
+              "gorest",
+              "co",
+              "in"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "39ed30a3-6ae9-44a2-ae00-0023184f4622",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "gorest.co.in",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "noauth",
+            "noauth": []
+          }
+        },
+        "response": {
+          "id": "a670526f-00ba-4bf8-8890-fdd3adc3cd17",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 21 May 2026 03:30:21 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "max-age=0, private, must-revalidate"
+            },
+            {
+              "key": "content-security-policy-report-only",
+              "value": "default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com 'nonce-pfHMX3/0a7bbt7AwkpNJrQ=='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google; frame-src https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"b2e6b69dd16d4e2cc2a32b7cbf0ecef3\""
+            },
+            {
+              "key": "feature-policy",
+              "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=63072000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Origin"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-links-current",
+              "value": "https://gorest.co.in/public/v2/users?page=1"
+            },
+            {
+              "key": "x-links-next",
+              "value": "https://gorest.co.in/public/v2/users?page=2"
+            },
+            {
+              "key": "x-links-previous",
+              "value": ""
+            },
+            {
+              "key": "x-pagination-limit",
+              "value": "10"
+            },
+            {
+              "key": "x-pagination-page",
+              "value": "1"
+            },
+            {
+              "key": "x-pagination-pages",
+              "value": "293"
+            },
+            {
+              "key": "x-pagination-total",
+              "value": "2930"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "90"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "88"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "2"
+            },
+            {
+              "key": "x-request-id",
+              "value": "c48a47b1-8596-4a8f-8cfe-a4c27ee6a95c"
+            },
+            {
+              "key": "x-runtime",
+              "value": "0.026967"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Vfqxs3yMopituapbNZ07SxirkzJpS141qYPXfe8%2B9mSb9sv8Yza%2Be9mutIjHnyHUIPVaskSBQiWG6jtrD21%2FHFBUhOuX%2BNWLBwzwMweO1JFaiwZoFlG1Ovo44XMwrTeFD%2F8sW%2BwcyI5mD1Y%3D\"}]}"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9ff0808539fecac8-MRS"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              91,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              55,
+              50,
+              50,
+              48,
+              55,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              82,
+              97,
+              99,
+              104,
+              101,
+              108,
+              95,
+              77,
+              99,
+              71,
+              108,
+              121,
+              110,
+              110,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              65,
+              114,
+              100,
+              101,
+              110,
+              46,
+              68,
+              101,
+              110,
+              101,
+              115,
+              105,
+              107,
+              57,
+              55,
+              64,
+              104,
+              111,
+              116,
+              109,
+              97,
+              105,
+              108,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              57,
+              50,
+              53,
+              53,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              80,
+              97,
+              114,
+              97,
+              109,
+              97,
+              114,
+              116,
+              104,
+              97,
+              32,
+              83,
+              97,
+              105,
+              110,
+              105,
+              32,
+              80,
+              104,
+              68,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              112,
+              104,
+              100,
+              95,
+              115,
+              97,
+              105,
+              110,
+              105,
+              95,
+              112,
+              97,
+              114,
+              97,
+              109,
+              97,
+              114,
+              116,
+              104,
+              97,
+              64,
+              116,
+              101,
+              114,
+              114,
+              121,
+              45,
+              110,
+              105,
+              116,
+              122,
+              115,
+              99,
+              104,
+              101,
+              46,
+              116,
+              101,
+              115,
+              116,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              57,
+              50,
+              53,
+              52,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              66,
+              97,
+              108,
+              97,
+              97,
+              100,
+              105,
+              116,
+              121,
+              97,
+              32,
+              80,
+              97,
+              116,
+              101,
+              108,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              112,
+              97,
+              116,
+              101,
+              108,
+              95,
+              98,
+              97,
+              108,
+              97,
+              97,
+              100,
+              105,
+              116,
+              121,
+              97,
+              64,
+              107,
+              108,
+              105,
+              110,
+              103,
+              46,
+              101,
+              120,
+              97,
+              109,
+              112,
+              108,
+              101,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              102,
+              101,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              55,
+              54,
+              50,
+              52,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              65,
+              109,
+              97,
+              114,
+              110,
+              97,
+              116,
+              104,
+              32,
+              66,
+              97,
+              110,
+              100,
+              111,
+              112,
+              97,
+              100,
+              104,
+              121,
+              97,
+              121,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              98,
+              97,
+              110,
+              100,
+              111,
+              112,
+              97,
+              100,
+              104,
+              121,
+              97,
+              121,
+              95,
+              97,
+              109,
+              97,
+              114,
+              110,
+              97,
+              116,
+              104,
+              64,
+              99,
+              97,
+              114,
+              114,
+              111,
+              108,
+              108,
+              45,
+              102,
+              101,
+              105,
+              108,
+              46,
+              116,
+              101,
+              115,
+              116,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              102,
+              101,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              55,
+              54,
+              49,
+              57,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              77,
+              114,
+              115,
+              46,
+              32,
+              71,
+              111,
+              114,
+              97,
+              107,
+              104,
+              97,
+              110,
+              97,
+              116,
+              104,
+              97,
+              32,
+              80,
+              97,
+              110,
+              105,
+              99,
+              107,
+              101,
+              114,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              112,
+              97,
+              110,
+              105,
+              99,
+              107,
+              101,
+              114,
+              95,
+              103,
+              111,
+              114,
+              97,
+              107,
+              104,
+              97,
+              110,
+              97,
+              116,
+              104,
+              97,
+              95,
+              109,
+              114,
+              115,
+              64,
+              99,
+              114,
+              111,
+              110,
+              105,
+              110,
+              45,
+              107,
+              101,
+              114,
+              116,
+              122,
+              109,
+              97,
+              110,
+              110,
+              46,
+              116,
+              101,
+              115,
+              116,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              102,
+              101,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              54,
+              56,
+              56,
+              48,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              82,
+              97,
+              109,
+              97,
+              97,
+              32,
+              78,
+              101,
+              104,
+              114,
+              117,
+              32,
+              68,
+              68,
+              83,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              110,
+              101,
+              104,
+              114,
+              117,
+              95,
+              100,
+              100,
+              115,
+              95,
+              114,
+              97,
+              109,
+              97,
+              97,
+              64,
+              104,
+              111,
+              119,
+              101,
+              108,
+              108,
+              46,
+              116,
+              101,
+              115,
+              116,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              54,
+              56,
+              55,
+              57,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              68,
+              97,
+              107,
+              115,
+              104,
+              97,
+              32,
+              83,
+              104,
+              117,
+              107,
+              108,
+              97,
+              32,
+              82,
+              101,
+              116,
+              46,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              115,
+              104,
+              117,
+              107,
+              108,
+              97,
+              95,
+              114,
+              101,
+              116,
+              95,
+              100,
+              97,
+              107,
+              115,
+              104,
+              97,
+              64,
+              97,
+              108,
+              116,
+              101,
+              110,
+              119,
+              101,
+              114,
+              116,
+              104,
+              46,
+              116,
+              101,
+              115,
+              116,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              102,
+              101,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              54,
+              56,
+              55,
+              56,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              84,
+              104,
+              101,
+              32,
+              72,
+              111,
+              110,
+              46,
+              32,
+              65,
+              97,
+              100,
+              105,
+              116,
+              121,
+              97,
+              32,
+              78,
+              97,
+              105,
+              107,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              104,
+              111,
+              110,
+              95,
+              116,
+              104,
+              101,
+              95,
+              97,
+              97,
+              100,
+              105,
+              116,
+              121,
+              97,
+              95,
+              110,
+              97,
+              105,
+              107,
+              64,
+              114,
+              117,
+              115,
+              115,
+              101,
+              108,
+              46,
+              101,
+              120,
+              97,
+              109,
+              112,
+              108,
+              101,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              54,
+              56,
+              55,
+              55,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              80,
+              114,
+              111,
+              102,
+              46,
+              32,
+              75,
+              97,
+              109,
+              108,
+              101,
+              115,
+              104,
+              32,
+              80,
+              105,
+              108,
+              108,
+              97,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              112,
+              114,
+              111,
+              102,
+              95,
+              112,
+              105,
+              108,
+              108,
+              97,
+              95,
+              107,
+              97,
+              109,
+              108,
+              101,
+              115,
+              104,
+              64,
+              106,
+              111,
+              104,
+              110,
+              115,
+              46,
+              101,
+              120,
+              97,
+              109,
+              112,
+              108,
+              101,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              102,
+              101,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              44,
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              54,
+              54,
+              56,
+              55,
+              54,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              77,
+              97,
+              114,
+              117,
+              116,
+              32,
+              77,
+              97,
+              108,
+              105,
+              107,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              109,
+              97,
+              108,
+              105,
+              107,
+              95,
+              109,
+              97,
+              114,
+              117,
+              116,
+              64,
+              109,
+              105,
+              108,
+              108,
+              101,
+              114,
+              46,
+              101,
+              120,
+              97,
+              109,
+              112,
+              108,
+              101,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125,
+              93
+            ]
+          },
+          "cookie": [],
+          "responseTime": 455,
+          "responseSize": 1246
+        },
+        "id": "c5657ef6-2bb1-4a89-9217-600f2fba2279",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "23ddca6b-6977-436e-8f1b-ccb9042f7dbb",
+          "length": 6,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "f2454f18-0a17-4082-b7d0-7b43e2e203ee"
+        },
+        "item": {
+          "id": "6625daeb-7e08-443b-9d3e-da55cf9bc484",
+          "name": "Update A User",
+          "request": {
+            "url": {
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "{{user_ID}}"
+              ],
+              "host": [
+                "{{baseURL}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"gender\": \"female\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "public",
+              "v2",
+              "users",
+              "8472207"
+            ],
+            "host": [
+              "gorest",
+              "co",
+              "in"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "c22e2350-649d-4ae5-90c2-6759967aa5b1",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "gorest.co.in",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "26",
+              "system": true
+            }
+          ],
+          "method": "PUT",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"gender\": \"female\"\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "9f01a8db-4d54-46e7-bf81-c2c7c2f2017f",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 21 May 2026 03:30:22 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "max-age=0, private, must-revalidate"
+            },
+            {
+              "key": "content-security-policy-report-only",
+              "value": "default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com 'nonce-ZBmmezsji1sHEllrnZzbJg=='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google; frame-src https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"04995a1def667909155014378aa80588\""
+            },
+            {
+              "key": "feature-policy",
+              "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=63072000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Origin"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "90"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "87"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "3"
+            },
+            {
+              "key": "x-request-id",
+              "value": "9910d0fa-3ca9-4d8d-8d6f-8e1dfd7307ac"
+            },
+            {
+              "key": "x-runtime",
+              "value": "0.038007"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=i5Sd05TzPbSHLxYbpiWdQppDElGem8mOQOIg9IrbHM2HXCALoxWmrNEjGPAjr90BfS30kmNhFRhLJDnxpxpji1hao2uiC5oUBQxHmIo4xbd0JA7sqQiJOKrikUNLsTR%2BRAI76V6jYXsSMIw%3D\"}]}"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9ff08087dc6ecac8-MRS"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              55,
+              50,
+              50,
+              48,
+              55,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              82,
+              97,
+              99,
+              104,
+              101,
+              108,
+              95,
+              77,
+              99,
+              71,
+              108,
+              121,
+              110,
+              110,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              65,
+              114,
+              100,
+              101,
+              110,
+              46,
+              68,
+              101,
+              110,
+              101,
+              115,
+              105,
+              107,
+              57,
+              55,
+              64,
+              104,
+              111,
+              116,
+              109,
+              97,
+              105,
+              108,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              102,
+              101,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 422,
+          "responseSize": 114
+        },
+        "id": "6625daeb-7e08-443b-9d3e-da55cf9bc484",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "8287befd-2762-41d7-9a69-6027444a917d",
+          "length": 6,
+          "cycles": 1,
+          "position": 4,
+          "iteration": 0,
+          "httpRequestId": "b33d8c33-f3b5-4730-97e0-621539751595"
+        },
+        "item": {
+          "id": "62e49668-436c-4c37-be12-fc02e71cceb7",
+          "name": "Patch  A User",
+          "request": {
+            "url": {
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "{{user_ID}}"
+              ],
+              "host": [
+                "{{baseURL}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}"
+              }
+            ],
+            "method": "PATCH"
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "public",
+              "v2",
+              "users",
+              "8472207"
+            ],
+            "host": [
+              "gorest",
+              "co",
+              "in"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "8b49ca67-690d-4ef2-b06b-496cfe609a41",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "gorest.co.in",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "0",
+              "system": true
+            }
+          ],
+          "method": "PATCH"
+        },
+        "response": {
+          "id": "cc1c8d04-0e5d-4646-b226-e1aecdb40fcb",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 21 May 2026 03:30:22 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "max-age=0, private, must-revalidate"
+            },
+            {
+              "key": "content-security-policy-report-only",
+              "value": "default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com 'nonce-YPvFHloV9JD+eTnYpHgOuQ=='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google; frame-src https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"04995a1def667909155014378aa80588\""
+            },
+            {
+              "key": "feature-policy",
+              "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=63072000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Origin"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "90"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "86"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "4"
+            },
+            {
+              "key": "x-request-id",
+              "value": "456abe7a-4cc8-468b-b121-0b3ba54cdcb5"
+            },
+            {
+              "key": "x-runtime",
+              "value": "0.060206"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=7FjEvUYVeNkjmiInYGAaPplmknGXbVOuDvw88nMlIL1NKHeIS5svp26boc1oh1Fb%2F6jxD%2BF11c5AQ44APSnXjZNVDv6V4jIdebwjij%2BZ3PLC%2Bs42s8qMN5eitaLkUXmCynvamUvJyNjZESs%3D\"}]}"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9ff0808a9ef1cac8-MRS"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              56,
+              52,
+              55,
+              50,
+              50,
+              48,
+              55,
+              44,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              82,
+              97,
+              99,
+              104,
+              101,
+              108,
+              95,
+              77,
+              99,
+              71,
+              108,
+              121,
+              110,
+              110,
+              34,
+              44,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              65,
+              114,
+              100,
+              101,
+              110,
+              46,
+              68,
+              101,
+              110,
+              101,
+              115,
+              105,
+              107,
+              57,
+              55,
+              64,
+              104,
+              111,
+              116,
+              109,
+              97,
+              105,
+              108,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              34,
+              103,
+              101,
+              110,
+              100,
+              101,
+              114,
+              34,
+              58,
+              34,
+              102,
+              101,
+              109,
+              97,
+              108,
+              101,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              105,
+              110,
+              97,
+              99,
+              116,
+              105,
+              118,
+              101,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 355,
+          "responseSize": 114
+        },
+        "id": "62e49668-436c-4c37-be12-fc02e71cceb7",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "4d211e29-0a8e-4e33-8dbc-9aefa82b5fdd",
+          "length": 6,
+          "cycles": 1,
+          "position": 5,
+          "iteration": 0,
+          "httpRequestId": "71b13971-fcc4-4499-8eb2-91874b725bdd"
+        },
+        "item": {
+          "id": "c85c8243-f88b-4198-821b-e60073332453",
+          "name": "Delete A User",
+          "request": {
+            "url": {
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "{{user_ID}}"
+              ],
+              "host": [
+                "{{baseURL}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{tokenID}}"
+              }
+            ],
+            "method": "DELETE",
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "public",
+              "v2",
+              "users",
+              "8472207"
+            ],
+            "host": [
+              "gorest",
+              "co",
+              "in"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "7e9b5f92-853a-408d-8e19-12480e1fbcce",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "gorest.co.in",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "DELETE",
+          "body": {
+            "mode": "raw",
+            "raw": "",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "8b2a0707-9c1b-4f22-957f-b17ef43ed702",
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Thu, 21 May 2026 03:30:23 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            },
+            {
+              "key": "content-security-policy-report-only",
+              "value": "default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com 'nonce-P88lCOqo8koXuf/6PavmWQ=='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google; frame-src https://googleads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+            },
+            {
+              "key": "feature-policy",
+              "value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=63072000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Origin"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "90"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "85"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "4"
+            },
+            {
+              "key": "x-request-id",
+              "value": "5246c1e1-7bb7-47d9-b797-c5370046ad1a"
+            },
+            {
+              "key": "x-runtime",
+              "value": "0.086364"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ciUTAtHdeE7yb%2BUhR36sOswj6GatRWn8qOovRhwziqcE6%2Bcu%2B7rw%2FnMbReldk1fe3vqR1we2KXBhiJbcq8GzxU1lpZCvhAeZz4OMLU1vX6WavvCdS1kmNIlB3ZT3escoRtppmecXXYzyVgs%3D\"}]}"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9ff0808ce908cac8-MRS"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": []
+          },
+          "cookie": [],
+          "responseTime": 374,
+          "responseSize": 0
+        },
+        "id": "c85c8243-f88b-4198-821b-e60073332453",
+        "assertions": [
+          {
+            "assertion": "Status code is 204",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 1698
+    },
+    "failures": [],
+    "error": null
+  }
+}

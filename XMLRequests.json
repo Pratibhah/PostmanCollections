@@ -1,0 +1,247 @@
+{
+  "info": {
+    "_postman_id": "8715e9db-b9cf-4be8-abe0-b8258ea896b9",
+    "name": "XML Requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19375140"
+  },
+  "item": [
+    {
+      "name": "1-Send request with XML body using script",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "let options = {",
+              "    'method' : 'POST',",
+              "    'url' : 'http://httpbin.org/post',",
+              "    'header' : {",
+              "        'Content-Type' : 'application/xml'",
+              "    },",
+              "    'body' : `<?xml version=\\\"1.0\\\"?>",
+              "        <items>",
+              "            <item>",
+              "                <full_name>Clifton Jaskolski</full_name>",
+              "                <phone>+1 787-347-2484</phone>",
+              "                <email>clifton75@hotmail.com</email>",
+              "                <currency>$ 7,566,419</currency>",
+              "                <number>8318787</number>",
+              "                <price>{{price}}</price>",
+              "            </item>",
+              "",
+              "        <item>",
+              "            <full_name>Kellie Thiel</full_name>",
+              "            <phone>+1 517-566-8914</phone>",
+              "            <email>kellie.thiel@hotmail.com</email>",
+              "            <currency>$ 2,094,157</currency>",
+              "            <number>8483211</number>",
+              "            <price>{{price}}</price>",
+              "        </item>",
+              "",
+              "        <item>",
+              "            <full_name>Laurence Schimmel</full_name>",
+              "            <phone>+1 332-103-4923</phone>",
+              "            <email>laurence41@gmail.com</email>",
+              "            <currency>$ 7,285,029</currency>",
+              "            <number>3996718</number>",
+              "            <price>{{price}}</price>",
+              "        </item>",
+              "    </items>`    ",
+              "};",
+              "",
+              "//paramerization",
+              "let priceData = pm.iterationData.get(\"price\");",
+              "console.log(priceData);",
+              "options.body = options.body.replace(/{{price}}/g, priceData);",
+              "",
+              "",
+              "pm.sendRequest(options, function(error,response){",
+              "    if(error){throw new Error(error)}",
+              "    else(console.log(response.status));",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "this is my xml.",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://httpbin.org/post",
+          "protocol": "http",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "post"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2-Get response in XML-GetUsers",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//xml2js -- api in postman",
+              "const xml2js = require('xml2js');",
+              "",
+              "const xmlContent = pm.response.text();",
+              "",
+              "//parsing",
+              "xml2js.parseString(xmlContent, function (err, result) {",
+              "    if (err) {",
+              "        console.log('error in parsing xml', err);",
+              "    }",
+              "    else{",
+              "        console.log('paresed xml', result);",
+              "    }",
+              "",
+              "",
+              "    pm.test('Total user count is 10', function(){",
+              "        pm.expect(pm.objects.object.length).to.eql(10);",
+              "",
+              "    });",
+              "",
+              "    pm.test('Fetch all userids and check the count', function(){",
+              "        const ids = result.objects.object.map(e => e.id[0]._);",
+              "        console.log(ids);",
+              "    });",
+              "",
+              "",
+              "    pm.test('Fetch all usersnames and check the count', function(){",
+              "        const usersnames = result.objects.object.map(e => e.name[0]);",
+              "        console.log(usersnames);",
+              "    });",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users.xml",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users.xml"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3-GetAUser",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const xml2js = require('xml2js');",
+              "const xmlContent = pm.response.text();",
+              "console.log(xmlContent);",
+              "",
+              "//parse xml",
+              "",
+              "xml2js.parseString(xmlContent, (err, result) => {",
+              "    if (err) {",
+              "        console.error('Error parsing XML:', err);",
+              "    }",
+              "    else{",
+              "        console.log(result);",
+              "        pm.test(\"Check user data\", function () {",
+              "            pm.expect(result.hash.id[0]._).to.eql('8462397');",
+              "            pm.expect(result.hash.name[0]).to.eql('Devi Kapoor IV');",
+              "            pm.expect(result.hash.email[0]).to.eql('iv_devi_kapoor@smitham.example');",
+              "            pm.expect(result.hash.gender[0]).to.eql('male');",
+              "            pm.expect(result.hash.status[0]).to.eql('active');",
+              "        ",
+              "        });",
+              "    }",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users/8462397.xml",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users",
+            "8462397.xml"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://cdn.cookielaw.org/consent/071fd164-e45b-4e9b-a106-021c14d33a7b/071fd164-e45b-4e9b-a106-021c14d33a7b.json\n\n",
+          "protocol": "https",
+          "host": [
+            "cdn",
+            "cookielaw",
+            "org"
+          ],
+          "path": [
+            "consent",
+            "071fd164-e45b-4e9b-a106-021c14d33a7b",
+            "071fd164-e45b-4e9b-a106-021c14d33a7b.json\n\n"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

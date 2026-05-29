@@ -1,0 +1,42 @@
+{
+  "info": {
+    "_postman_id": "09f2a8b1-1d4a-4702-91f4-26e0b9c73e34",
+    "name": "SampleCollection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19375140"
+  },
+  "item": [
+    {
+      "name": "GetUsers",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/public/v2/users",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

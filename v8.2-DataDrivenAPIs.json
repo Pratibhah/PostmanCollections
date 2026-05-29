@@ -1,0 +1,146 @@
+{
+  "info": {
+    "_postman_id": "a671b9fa-24ea-4324-8d83-61f1f3837b00",
+    "name": "v8.2-DataDrivenAPIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19375140"
+  },
+  "item": [
+    {
+      "name": "1-CreateData",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "//File data is iterartive data --> toObject() converts iterative data to --> JS Object --> stringify() converts JS object to --> JSON",
+              "pm.environment.set(\"requestJSON\", JSON.stringify(pm.iterationData.toObject()));"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{{requestJSON}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://httpbin.org/post",
+          "protocol": "http",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "post"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CreateUser",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"user data is correct\", function(){",
+              "",
+              "    const responseData = pm.response.json();  //actual data",
+              "",
+              "    // validates fields from data file",
+              "    pm.expect(responseData.name).to.eql(pm.iterationData.get(\"name\"));",
+              "    pm.expect(responseData.gender).to.eql(pm.iterationData.get(\"gender\"));",
+              "    pm.expect(responseData.status).to.eql(pm.iterationData.get(\"status\"));",
+              "    ",
+              "   // validate fields from body",
+              "    const rawbody = pm.request.body.raw; //JSON response",
+              "    const requestBody = JSON.parse(rawbody); //JSON to JS object",
+              "    const email = requestBody.email;",
+              "    console.log(email);",
+              "",
+              "    pm.expect(responseData.email).to.eql(email);",
+              "",
+              "",
+              "",
+              "});",
+              "",
+              "",
+              " "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"{{name}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"gender\": \"{{gender}}\",\n    \"status\": \"{{status}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

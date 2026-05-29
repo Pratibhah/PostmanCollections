@@ -1,0 +1,307 @@
+{
+  "info": {
+    "_postman_id": "745cdd41-718a-40eb-b4bd-761dc3fa6a26",
+    "name": "v6-GOREST APIs-Workflow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19375140"
+  },
+  "item": [
+    {
+      "name": "Create a User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Getting the response variable and setting it to pass to another request.",
+              "",
+              "//pm ---> Postman object",
+              "//pm.response ---> Caapturing the response",
+              "//pm.response.json() ---> returns JSON object as response",
+              "",
+              "//const - constant/final variable - can't be reassigned , let - can be reassigned.",
+              "",
+              "",
+              "const response = pm.response.json();",
+              "",
+              "const userID = response.id; //fetch the userId from response",
+              "",
+              "console.log(\"user Id is \" + userID);",
+              "",
+              "// L D E C G",
+              "// Supports JSON and CSV as the Data file",
+              "",
+              "// pm.collectionvariables ---> Set the value at the collection level",
+              "// pm.environment ---> Set the value at the environment level",
+              "// pm.globals ---> Set the value at the global level  ",
+              "",
+              "// pm.variables ---> Set the value at the local level",
+              "// Local variables will be activated when you are running the whole collection",
+              "// Scope of the local variable is during the run time of the collection.",
+              "",
+              "//Set userId as local variable and can be used thoughtout the collection at the run time only means you can not use it for independent requests.",
+              "",
+              "pm.variables.set(\"user_ID\", userID); ",
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"gender\": \"male\",\n    \"status\": \"active\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get a User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users/{{user_ID}}",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users",
+            "{{user_ID}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Patch a User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"status\":\"inactive\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users/{{user_ID}}",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users",
+            "{{user_ID}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 204\", function () {",
+              "    pm.response.to.have.status(204);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users/{{user_ID}}",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users",
+            "{{user_ID}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get a User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer 4d8a69ce63c9f29cf4e8167a73728a16140d61357aef36dfda74a1559dec1fb9",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://gorest.co.in/public/v2/users/{{user_ID}}",
+          "protocol": "https",
+          "host": [
+            "gorest",
+            "co",
+            "in"
+          ],
+          "path": [
+            "public",
+            "v2",
+            "users",
+            "{{user_ID}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "pm.test(\"Response time is less than 5000ms\", function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+          "});"
+        ]
+      }
+    }
+  ]
+}
