@@ -1,0 +1,16 @@
+{
+	"id": "43e581c8-0349-4763-867d-df6bea8d8341",
+	"name": "SampleCollection",
+	"values": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-05-30T04:01:05.752Z",
+	"_postman_exported_using": "Postman/12.12.3"
+}
